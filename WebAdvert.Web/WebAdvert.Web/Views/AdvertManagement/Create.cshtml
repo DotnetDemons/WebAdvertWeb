@@ -1,0 +1,39 @@
+﻿
+@model WebAdvert.Web.Models.AdvertManagement.CreateAdvertViewModel
+
+<div class="row">
+    <div class="col-md-4">
+
+        <form method="post" asp-controller="AdvertManagement" asp-action="Create" enctype="multipart/form-data">
+            <h4>Create new advertisement</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger">
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            @*<div class="form-group">
+                
+                <input type="file" name="imageFile" value="upload an image" class="form-control" />
+               
+            </div>*@
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div>

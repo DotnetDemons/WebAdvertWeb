@@ -30,21 +30,29 @@ namespace WebAdvert.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Signup(SignupModel model)
         {
-            if(ModelState.IsValid)
+            try
             {
-                var user = _pool.GetUser(model.Email);
-                if(user.Status != null)
+                if (ModelState.IsValid)
                 {
-                    ModelState.AddModelError("UserExists", "User with email mentioned already exists");
-                    return View(model);
-                }
-
-                var createdUser = await _userManager.CreateAsync(user, model.Password);
-                if(createdUser.Succeeded)
-                {
-                   return RedirectToAction("Confirm");
+                    var user = _pool.GetUser(model.Email);
+                    if (user.Status != null)
+                    {
+                        ModelState.AddModelError("UserExists", "User with email mentioned already exists");
+                        return View(model);
+                    }
+                    //user.Attributes.Add(CognitoAttribute.UserName.AttributeName, model.Email);
+                    var createdUser = await _userManager.CreateAsync(user, model.Password);
+                    if (createdUser.Succeeded)
+                    {
+                        return RedirectToAction("Confirm");
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+
+            }
+            
             return View(model);
         }
 
