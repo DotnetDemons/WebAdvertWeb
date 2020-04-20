@@ -1,0 +1,25 @@
+﻿
+<div class="row">
+    <div class="col-md-4">
+        <h4>All advertisements</h4>
+        <hr />
+        <input type="button" value="Add" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "AdvertManagement")'" />
+        <hr />
+        <table class="table table-bordered">
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+            @foreach (var d in Model)
+            {
+                <tr>
+                    <td>@d.Title</td>
+                    <td>@d.Description</td>
+                    <td>@d.Price</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>

@@ -10,6 +10,6 @@ namespace WebAdvert.Web.ServiceClients
     {
         Task<AdvertResponse> Create(CreateAdvertModel model);
         Task<bool> Confirm(ConfirmAdvertRequest model);
-
+        Task<List<CreateAdvertModel>> Get(string id);
     }
 }

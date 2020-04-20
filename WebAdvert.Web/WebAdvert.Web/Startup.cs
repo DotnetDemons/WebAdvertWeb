@@ -78,7 +78,7 @@ namespace WebAdvert.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=AdvertManagement}/{action=Create}/{id?}");
+                    pattern: "{controller=AdvertManagement}/{action=Get}/{id?}");
             });
         }
     }

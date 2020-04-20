@@ -39,6 +39,16 @@ namespace WebAdvert.Web.ServiceClients
 
         }
 
+        public async Task<List<CreateAdvertModel>> Get(string id)
+        {
+            var response = await _httpClient.GetAsync(_httpClient.BaseAddress + "Advert/GetAdvert");
+            var responseJson = await response.Content.ReadAsStringAsync();
+            var createAdvertResponse = JsonConvert.DeserializeObject<List<AdvertModel>>(responseJson);
+            var advertResponse = _mapper.Map<List<CreateAdvertModel>>(createAdvertResponse);
+            return advertResponse;
+
+        }
+
         public async Task<bool> Confirm(ConfirmAdvertRequest model)
         {
             var advertModel = _mapper.Map<ConfirmAdvertModel>(model);

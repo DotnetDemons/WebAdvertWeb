@@ -61,7 +61,20 @@ namespace WebAdvert.Web.Controllers
                 //}
                 
             }
-            return View(model);
+            if (model != null)
+            {
+                var data = await _advertAPIClient.Get(_mapper.Map<string>(""));
+                return View("Dashboard", data);
+            }
+            else
+                return View(model);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var model = await _advertAPIClient.Get(_mapper.Map<string>(""));
+
+            return View("Dashboard",model);
         }
     }
 }
